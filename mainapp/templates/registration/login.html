@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <h1>Log in</h1>
+    {% if form.errors %}
+    <p>
+        Por favor verifica tu usuario y contrasena
+    </p>
+    {% else %}
+    <p>
+        Por favor llena el formulario para iniciar sesion. Si no tienes una cuenta, sigue el siguiente link para <a href="{% url 'register' %}">Registrarse</a>
+    </p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+            {{form.as_p}}
+            {% csrf_token %} <!--cross site request forgery protection. Evita que nos hackeen-->
+            <input type="hidden" name="next" value="{{ next  }}">
+            <p>
+                <input type="submit" value="Log-in">
+            </p>
+        </form>
+        <p>
+            <a href="{% url 'password_reset' %}">
+                Olvidaste tu contrasena?
+            </a>
+        </p>
+    </div>
+{% endblock %}

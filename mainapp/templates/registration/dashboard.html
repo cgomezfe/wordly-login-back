@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+    <h1>Pagina Principal :D</h1>
+    Hola, {{request.user.username}}
+    <h3>Bienvenido, futuro poliglota</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam non dolore voluptates velit ipsum accusantium veritatis doloremque soluta, nisi, quidem eum quasi tempora reprehenderit. Sunt id cum similique eum!</p>
+    <p>Puede cambiar su contrasena <a href="{% url 'password_change' %}">aqui</a></p>
+    <a href="{% url 'logout' %}">logout</a>
+{% endblock %}
